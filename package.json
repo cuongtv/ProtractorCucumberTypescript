@@ -25,9 +25,8 @@
     "init-contributors": "all-contributors init",
     "add-contributors": "all-contributors add",
     "generate-contributors": "all-contributors generate",
-    "test": "protractor typeScript/config/config.js",
-    "webdriver-update": "webdriver-manager update",
-    "webdriver-start": "webdriver-manager start"
+    "pretest": "webdriver-manager update",
+    "test": "protractor typeScript/config/config.js"
   },
   "author": "Cuong Tran",
   "devDependencies": {

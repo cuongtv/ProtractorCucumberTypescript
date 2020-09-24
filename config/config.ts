@@ -5,22 +5,26 @@ const jsonReports = process.cwd() + "/reports/json";
 
 export const config: Config = {
   seleniumAddress: "http://127.0.0.1:4444/wd/hub",
-
+  directConnect: true,
   SELENIUM_PROMISE_MANAGER: false,
 
-  baseUrl: "https://customerstg.acomcloud.com/achautostg",
+  baseUrl: "https://oneapstg.americanexpress.com/achautostg",
 
   capabilities: {
     browserName: "chrome",
+    chromeOptions: {
+      args: ["--start-maximized", "--disable-gpu"],
+    },
   },
 
   framework: "custom",
   frameworkPath: require.resolve("protractor-cucumber-framework"),
+  ignoreUncaughtExceptions: true,
 
   specs: ["../../features/**/*.feature"],
 
   onPrepare: () => {
-    browser.ignoreSynchronization = true;
+    // browser.ignoreSynchronization = true;
     browser.manage().window().maximize();
     Reporter.createDirectory(jsonReports);
   },
